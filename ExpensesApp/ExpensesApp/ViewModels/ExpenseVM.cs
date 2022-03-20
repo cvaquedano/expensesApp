@@ -20,7 +20,7 @@ namespace ExpensesApp.ViewModels
             AddExpenseCommand = new Command(AddExpense);
         }
 
-        private void GetExpenses()
+        public void GetExpenses()
         {
             var expenses = Expense.GetExpenses();
             Expenses.Clear();

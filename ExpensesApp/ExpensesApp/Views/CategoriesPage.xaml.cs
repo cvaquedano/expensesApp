@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExpensesApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,17 @@ namespace ExpensesApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CategoriesPage : ContentPage
     {
+        CategoriesVM viewModel;
         public CategoriesPage()
         {
             InitializeComponent();
+            viewModel = Resources["vm"] as CategoriesVM;
+
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.GetExpensesPerCategory();
         }
     }
 }
