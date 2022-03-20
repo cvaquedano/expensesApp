@@ -1,6 +1,7 @@
 ﻿using ExpensesApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
@@ -25,8 +26,12 @@ namespace ExpensesApp.ViewModels
         public string ExpenseCategory { get { return expenseCategory; } set { expenseCategory = value; OnPropertyChanged("Category"); } }
 
         public Command SaveExpenseCommand { get; set; }
+
+        public ObservableCollection<string> Categories { get; set; } = new ObservableCollection<string>();
         public NewExpenseVM()
         {
+            ExpenseDate = DateTime.Today;
+            GetCategories();
             SaveExpenseCommand = new Command(InserExpense);
         }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -51,5 +56,18 @@ namespace ExpensesApp.ViewModels
             else
                 Application.Current.MainPage.DisplayAlert("Error", "No items were inserter", "ok");
         }
+        private void GetCategories()
+        {
+            Categories.Clear();
+            Categories.Add("Housing");
+            Categories.Add("Debt");
+            Categories.Add("Health");
+            Categories.Add("Food");
+            Categories.Add("Personal");
+            Categories.Add("Travel");
+            Categories.Add("Other");
+        }
+
+       
     }
 }
