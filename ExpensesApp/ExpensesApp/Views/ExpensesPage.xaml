@@ -17,6 +17,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Name}"
+                              StyleId="checkmark"
                               Detail="{Binding Category}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
